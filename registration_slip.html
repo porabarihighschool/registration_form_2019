@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
   <title>Registration Slip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -210,7 +211,9 @@
 <body>
 
   <div id="registrationSlip">
-    <div class="logo-bg"></div> <!-- Logo -->
+    <div class="logo-bg">
+      <img src="logo.png" alt="School Logo" class="logo-img" />
+    </div>
 
     <div class="header">
       <h2>পোড়াবাড়ী উচ্চ বিদ্যালয়, সিরাজগঞ্জ</h2>
@@ -219,8 +222,7 @@
     </div>
 
     <div class="info-section"><span class="label">Name:</span><span class="value" id="slipName"></span></div>
-    <div class="info-section"><span class="label">Phone:</span><span class="value" id="slipPhone"></span>
-    </div>
+    <div class="info-section"><span class="label">Phone:</span><span class="value" id="slipPhone"></span></div>
     <div class="info-section"><span class="label">Email:</span><span class="value" id="slipEmail"></span></div>
     <div class="info-section"><span class="label">SSC Batch:</span><span class="value" id="slipBatch"></span></div>
     <div class="info-section"><span class="label">Participants:</span><span class="value" id="slipParticipants"></span>
@@ -242,7 +244,10 @@
   <script>
     // Set Timestamp
     const now = new Date();
-    const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    const options = {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+    };
     document.getElementById('slipDate').textContent = now.toLocaleString('en-GB', options);
 
     // Print Slip
@@ -250,24 +255,22 @@
       window.print();
     }
 
-    // ✅ Fill slip with form data from localStorage
+    // Fill slip with form data from localStorage
     const slipData = JSON.parse(localStorage.getItem('registrationSlip'));
-
-if (slipData) {
-    document.getElementById('slipName').textContent = slipData.name || '';
-    document.getElementById('slipPhone').textContent = slipData.phone || '';
-    document.getElementById('slipEmail').textContent = slipData.email || '';
-    document.getElementById('slipBatch').textContent = slipData.ssc_batch || '';
-    document.getElementById('slipParticipants').textContent = slipData.participants || '';
-    document.getElementById('slipTshirt').textContent = slipData.tshirt_size || '';
-    document.getElementById('slipPayment').textContent = slipData.payment_method || '';
-    document.getElementById('slipTxn').textContent = slipData.transaction_id || '';
-    document.getElementById('slipRegID').textContent = slipData.registration_id || '';
-    document.getElementById('slipAmount').textContent = `${slipData.total_amount} BDT` || '';
-} else {
-    alert('No registration data found. Please submit the form first.');
-}
-
+    if (slipData) {
+      document.getElementById('slipName').textContent = slipData.name || '';
+      document.getElementById('slipPhone').textContent = slipData.phone || '';
+      document.getElementById('slipEmail').textContent = slipData.email || '';
+      document.getElementById('slipBatch').textContent = slipData.ssc_batch || '';
+      document.getElementById('slipParticipants').textContent = slipData.participants || '';
+      document.getElementById('slipTshirt').textContent = slipData.tshirt_size || '';
+      document.getElementById('slipPayment').textContent = slipData.payment_method || '';
+      document.getElementById('slipTxn').textContent = slipData.transaction_id || '';
+      document.getElementById('slipRegID').textContent = slipData.registration_id || '';
+      document.getElementById('slipAmount').textContent = `${slipData.total_amount} BDT` || '';
+    } else {
+      alert('No registration data found. Please submit the form first.');
+    }
   </script>
 
 </body>
