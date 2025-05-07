@@ -6,9 +6,8 @@
     <!-- Meta settings for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta property="og:locale" content="bn_BD" />
-  <meta property="og:locale:alternate" content="en_US" /> -->
-    <title>Porabari High School, Sirajganj 36th Anniversary and Reunion Festival</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
+    <title>পোড়াবাড়ি উচ্চ বিদ্যালয়, সিরাজগঞ্জ ৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব</title>
 
     <!-- Tailwind CSS CDN for styling -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -25,7 +24,7 @@
         /* Smooth fade transition effect */
         .fade {
             transition: all 0.5s ease;
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         /* Class to hide elements with fade effect */
@@ -60,15 +59,19 @@
             gap: 50px;
         }
     </style>
+
 </head>
 
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Header section for the event title and language toggle buttons -->
     <header class="bg-blue-600 text-white py-4 text-center fade">
-        <h1 id="mainHeading" class="text-3xl font-bold">Reunion Festival Marking The 36th Anniversary of Porabari High
+
+        <h1 id="mainHeading" class="text-3xl font-bold">Reunion Festival Marking The 36 Years Anniversary of Porabari
+            High
             School, Sirajganj</h1>
         <p id="organizerInfo" class="text-sm mt-1">Organized by SSC students from 1989 to 2025</p>
+
         <div class="mt-2">
             <!-- Language selection buttons -->
             <button onclick="setLanguage('en')" class="bg-white text-blue-600 px-3 py-1 rounded mr-2">English</button>
@@ -87,11 +90,10 @@
 
     <!-- Registration form container -->
     <div class="max-w-xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-lg fade">
-        <h1 class="text-2xl font-bold mb-4 text-center">Registration Form Batch 2019</h1>
+        <h1 class="text-2xl font-bold mb-4 text-center">Registration Form</h1>
 
         <!-- Registration form starts here -->
         <form id="registrationForm">
-
             <!-- Full Name Input Field -->
             <div class="mb-4">
                 <label for="name" class="block mb-1 font-medium">Full Name <span class="text-red-500">*</span></label>
@@ -153,6 +155,7 @@
             <div class="mb-4">
                 <label class="block mb-1 font-medium">Payment Method <span class="text-red-500">*</span></label>
                 <div id="paymentOptions" class="flex gap-6 justify-center items-center">
+
                     <!-- bKash -->
                     <div id="option-bkash" onclick="selectPayment('bkash')"
                         class="border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all">
@@ -222,6 +225,42 @@
                     maxlength="10" pattern=".{10,10}" class="w-full border border-gray-300 p-2 rounded" required>
             </div>
 
+            <!-- Payment Screenshot Upload Field -->
+            <div class="mb-6">
+                <label for="payment_screenshot" class="block text-gray-700 font-medium mb-2">
+                    Payment Screenshot <span class="text-red-500">*</span>
+                </label>
+                <div
+                    class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition duration-200">
+                    <label for="payment_screenshot"
+                        class="flex flex-col items-center justify-center cursor-pointer space-y-2">
+                        <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" stroke-width="1.5"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 16.5V19a2.5 2.5 0 002.5 2.5h13a2.5 2.5 0 002.5-2.5v-2.5M16 10l-4-4m0 0L8 10m4-4v12" />
+                        </svg>
+                        <span class="text-gray-500 text-sm text-center">Click to upload or drag your screenshot here<br>
+                            <span class="text-xs text-gray-400">(PNG, JPG only, max 2MB)</span>
+                        </span>
+
+                        <!-- Screenshot upload input -->
+                        <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*"
+                            class="hidden" required>
+
+                        <!-- Container for image preview and remove button -->
+                        <div id="screenshotContainer" style="display:none; position:relative; width: fit-content;"
+                            class="mt-2">
+                            <button id="removeScreenshot" type="button"
+                                style="position: absolute; top: 2px; right: 2px; background-color: rgba(0, 0, 0, 0.4); color: white; border: none; border-radius: 4px; padding: 1px 2px; cursor: pointer; z-index: 10;">
+                                ✕
+                            </button>
+                            <img id="screenshotPreview" src="" alt="Preview"
+                                style="max-width: 100px; max-height: 100px; border-radius: 8px;" />
+                        </div>
+                    </label>
+                </div>
+            </div>
+
             <input type="hidden" id="registration_id" name="registration_id" value="">
 
             <!-- Submit Button with spinner -->
@@ -255,40 +294,39 @@
 
     <script>
         // Google Apps Script endpoint for form submissions
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxGUuLiwo0DpXULqs7SLlg9R8EKiI-CAJC_dv6qjpjjMTbqQZB74yGTNaLj4WmzT8BZ/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzBSI9MPt4S2xCjdx2NsRkvqtl6fu4jBq0dbVGMVd9psHV7fBRlGQvo88Ld_Hcf2LOO/exec';
 
         // Language translations
         const translations = {
             en: [
                 "Full Name", "Phone Number", "Email Address", "SSC Batch", "Number of Participants",
-                "T-Shirt Size", "Payment Method", "Payment Transaction ID", "Total:",
+                "T-Shirt Size", "Payment Method", "Payment Transaction ID", "Payment Screenshot", "Total:",
                 "Address: Porabari High School School Ground", "Contact: 01772-659023",
-                "Developed by MD. SOJIB HOSSEN", "Registration Form Batch 2019",
-                "Reunion Festival Marking The 36th Anniversary of Porabari High School, Sirajganj",
+                "Developed by MD. SOJIB HOSSEN", "Registration Form",
+                "Reunion Festival Marking The 36 Years Anniversary of Porabari High School, Sirajganj",
                 "Organized by SSC students from 1989 to 2025", "⏰ Registration Deadline: Please complete your registration and payment by May 15, 2025 to join the 36th Anniversary Reunion Festival of Porabari High School. Late entries will not be accepted."
-
             ],
             bn: [
                 "পূর্ণ নাম", "ফোন নম্বর", "ইমেইল ঠিকানা", "এসএসসি ব্যাচ", "অংশগ্রহণকারীর সংখ্যা",
-                "টি-শার্টের সাইজ", "পেমেন্ট পদ্ধতি", "পেমেন্ট ট্রানজ্যাকশন আইডি", "মোট:",
+                "টি-শার্টের সাইজ", "পেমেন্ট পদ্ধতি", "পেমেন্ট ট্রানজ্যাকশন আইডি", "পেমেন্ট স্ক্রিনশট", "মোট:",
                 "ঠিকানা: পোড়াবাড়ী উচ্চ বিদ্যালয় মাঠ", "যোগাযোগ: ০১৭৭২-৬৫৯০২৩",
-                "ডেভেলপার মো. সজিব হোসেন", "নিবন্ধন ফর্ম ব্যাচ ২০১৯",
+                "ডেভেলপার মো. সজিব হোসেন", "নিবন্ধন ফর্ম",
                 "পোড়াবাড়ি উচ্চ বিদ্যালয়, সিরাজগঞ্জ ৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব",
-                "আয়োজনে ১৯৮৯ থেকে ২০২৫ সালের এসএসসি শিক্ষার্থীবৃন্দ", "⏰ নিবন্ধনের শেষ সময়: দয়া করে 15 মে, ২০২৫ তারিখের মধ্যে রেজিস্ট্রেশন ও পেমেন্ট সম্পন্ন করুন। পুনর্মিলনী উৎসবে অংশ নিতে সময়মতো নিবন্ধন প্রয়োজন।"
+                "আয়োজনে ১৯৮৯ থেকে ২০২৫ সালের এসএসসি শিক্ষার্থীবৃন্দ", "⏰ নিবন্ধনের শেষ সময়: দয়া করে ১৫ মে, ২০২৫ তারিখের মধ্যে রেজিস্ট্রেশন ও পেমেন্ট সম্পন্ন করুন। পুনর্মিলনী উৎসবে অংশ নিতে সময়মতো নিবন্ধন প্রয়োজন।"
             ]
         };
 
         // Payment instructions
         const paymentInstructions = {
             en: {
-                bkash: "bKash Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID below.",
-                nagad: "Nagad Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID below.",
-                rocket: "Rocket Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID below."
+                bkash: "bKash Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below.",
+                nagad: "Nagad Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below.",
+                rocket: "Rocket Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below."
             },
             bn: {
-                bkash: "বিকাশ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি দিন।",
-                nagad: "নগদ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি দিন।",
-                rocket: "রকেট নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি দিন।"
+                bkash: "বিকাশ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।",
+                nagad: "নগদ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।",
+                rocket: "রকেট নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।"
             }
         };
 
@@ -299,52 +337,52 @@
             rocket: "01772659023"
         };
 
-        // Current language
+        // default to English
         let currentLanguage = 'en';
 
         // Update total amount
         function updateAmount() {
             const participantsInput = document.getElementById('participants');
-            const participants = parseInt(participantsInput.value);
+            const batchSelect = document.getElementById('ssc_batch');
+            const totalAmountInput = document.getElementById('total_amount');
+            const amountDisplay = document.getElementById('amount_display');
 
-            const batchYear = parseInt(document.getElementById('ssc_batch').value);
+            if (!participantsInput || !batchSelect || !totalAmountInput || !amountDisplay) return;
+
+            const participants = parseInt(participantsInput.value);
+            const batchYear = parseInt(batchSelect.value);
 
             if (!batchYear || !participants || participants < 1) {
-                document.getElementById('total_amount').value = 0;
-                document.getElementById('amount_display').innerText =
-                    `${translations[currentLanguage][8]} 0 ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
+                totalAmountInput.value = 0;
+                amountDisplay.innerText = `${translations[currentLanguage][9]} 0 ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
                 return;
             }
 
-            let participantAmount = 0;
-
+            let participantAmount = 600;
             if (batchYear >= 1989 && batchYear <= 2010) {
                 participantAmount = 1200;
             } else if (batchYear >= 2011 && batchYear <= 2016) {
                 participantAmount = 800;
-            } else if (batchYear >= 2017 && batchYear <= 2024) {
-                participantAmount = 600;
-            } else {
-                participantAmount = 600; // fallback
             }
 
             const guestCount = Math.max(0, participants - 1);
-            const guestAmount = 400;
+            const guestAmount = 200;
+            const totalAmount = participantAmount + guestCount * guestAmount;
 
-            let totalAmount = participantAmount + guestCount * guestAmount;
-
-            document.getElementById('total_amount').value = totalAmount;
-            document.getElementById('amount_display').innerText =
-                `${translations[currentLanguage][8]} ${totalAmount} ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
+            totalAmountInput.value = totalAmount;
+            amountDisplay.innerText = `${translations[currentLanguage][9]} ${totalAmount} ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
         }
 
         // Populate SSC batch years
-        const batchSelect = document.getElementById('ssc_batch');
-        for (let year = 2019; year <= 2019; year++) {
-            const option = document.createElement('option');
-            option.value = year;
-            option.text = year;
-            batchSelect.appendChild(option);
+        function populateBatchYears() {
+            const batchSelect = document.getElementById('ssc_batch');
+            if (!batchSelect) return;
+            for (let year = 2019; year <= 2019; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.text = year;
+                batchSelect.appendChild(option);
+            }
         }
 
         // Set language
@@ -357,7 +395,6 @@
                 const labels = document.querySelectorAll('label.block.font-medium');
                 const text = translations[lang];
 
-                // Update required labels (with potential red star)
                 labels.forEach((label, index) => {
                     const hasStar = label.querySelector('span.text-red-500');
                     if (hasStar) {
@@ -367,14 +404,16 @@
                     }
                 });
 
-                document.getElementById('amount_display').innerText = `${text[8]} ${document.getElementById('total_amount').value} ${lang === 'bn' ? 'টাকা' : 'Taka'}`;
-                document.querySelector('.mt-8 p:nth-child(1)').innerHTML = `<strong>${text[9]}</strong>`;
-                document.querySelector('.mt-8 p:nth-child(2)').innerHTML = `<strong>${text[10]}</strong>`;
-                document.querySelector('.mt-4 p').innerText = text[11];
-                document.querySelector('h1.text-2xl').innerText = text[12];
-                document.getElementById('mainHeading').innerText = text[13];
-                document.getElementById('organizerInfo').innerText = text[14];
-                document.getElementById('deadlineAnnouncement').innerText = translations[lang][15];
+                document.getElementById('amount_display').innerText =
+                    `${text[9]} ${document.getElementById('total_amount').value} ${lang === 'bn' ? 'টাকা' : 'Taka'}`;
+
+                document.querySelector('.mt-8 p:nth-child(1)').innerHTML = `<strong>${text[10]}</strong>`;
+                document.querySelector('.mt-8 p:nth-child(2)').innerHTML = `<strong>${text[11]}</strong>`;
+                document.querySelector('.mt-4 p').innerText = text[12];
+                document.querySelector('h1.text-2xl').innerText = text[13];
+                document.getElementById('mainHeading').innerText = text[14];
+                document.getElementById('organizerInfo').innerText = text[15];
+                document.getElementById('deadlineAnnouncement').innerText = text[16];
 
                 const selectedMethod = document.getElementById('payment_method').value;
                 if (selectedMethod) {
@@ -386,12 +425,25 @@
             }, 500);
         }
 
+        document.addEventListener('DOMContentLoaded', function () {
+            populateBatchYears();
+            updateAmount();
+
+            const participantsInput = document.getElementById('participants');
+            const batchSelect = document.getElementById('ssc_batch');
+
+            if (participantsInput) participantsInput.addEventListener('input', updateAmount);
+            if (batchSelect) batchSelect.addEventListener('change', updateAmount);
+
+            const savedLang = localStorage.getItem('preferredLang') || 'bn';
+            setLanguage(savedLang);
+        });
+
         // Only allow numbers in phone input
         const phoneInput = document.getElementById('phone');
         phoneInput.addEventListener('input', function () {
             this.value = this.value.replace(/[^0-9]/g, '');
             if (this.value.length > 11) this.value = this.value.slice(0, 11);
-            if (/^01\d{0,9}$/.test(this.value)) this.setCustomValidity('');
         });
 
         phoneInput.addEventListener('blur', function () {
@@ -411,17 +463,41 @@
             setTimeout(() => toast.classList.add('hidden'), 3000);
         }
 
-        // Payment method selection
+        // Image preview and removal
+        const fileInput = document.getElementById('payment_screenshot');
+        const preview = document.getElementById('screenshotPreview');
+        const container = document.getElementById('screenshotContainer');
+        const removeButton = document.getElementById('removeScreenshot');
+
+        fileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    container.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                container.style.display = 'none';
+                preview.src = '';
+            }
+        });
+
+        removeButton.addEventListener('click', function () {
+            fileInput.value = '';
+            preview.src = '';
+            container.style.display = 'none';
+        });
+
+        // Payment method select
         function selectPayment(method) {
-            // Update hidden field
             document.getElementById('payment_method').value = method;
 
-            // Show payment details
             const paymentDetails = document.getElementById('paymentDetails');
             paymentDetails.innerText = paymentInstructions[currentLanguage][method];
             paymentDetails.classList.remove('hidden');
 
-            // Copy button
             const copyBtn = document.getElementById('copyPaymentNumber');
             copyBtn.classList.remove('hidden');
             copyBtn.onclick = () => {
@@ -450,76 +526,114 @@
             // Highlight selected border
             ['bkash', 'nagad', 'rocket'].forEach(id => {
                 const div = document.getElementById('option-' + id);
-                if (id === method) {
-                    div.classList.remove('border-gray-300');
-                    div.classList.add('border-blue-600');
-                } else {
-                    div.classList.remove('border-blue-600');
-                    div.classList.add('border-gray-300');
-                }
+                div.classList.toggle('border-blue-600', id === method);
+                div.classList.toggle('border-gray-300', id !== method);
             });
         }
 
-        // Form submission
-        document.getElementById('registrationForm').addEventListener('submit', e => {
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', async function (e) {
             e.preventDefault();
             const form = e.target;
+            const spinner = document.getElementById('spinner');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = submitBtn.querySelector('span');
 
-            document.getElementById('spinner').classList.remove('hidden');
-            document.getElementById('submitBtn').setAttribute('aria-disabled', 'true');
-            document.getElementById('submitBtn').querySelector('span').innerText = "Submitting...";
+            spinner.classList.remove('hidden');
+            submitBtn.setAttribute('aria-disabled', 'true');
+            submitText.innerText = currentLanguage === 'bn' ? "জমা দিচ্ছে..." : "Submitting...";
 
-            // 🛑 এখানে Registration ID তৈরি হচ্ছে
-            const batchYear = document.getElementById('ssc_batch').value;
+            const batchYear = document.getElementById('ssc_batch').value || '0000';
             const uniqueSuffix = Date.now().toString().slice(-4);
             const registrationId = `PHS${batchYear}${uniqueSuffix}`;
             document.getElementById('registration_id').value = registrationId;
 
             const formData = new FormData(form);
+            const file = formData.get('payment_screenshot');
+            if (!file || !file.name) {
+                showToast(currentLanguage === 'bn'
+                    ? "❌ পেমেন্ট স্ক্রিনশট নির্বাচন করুন।"
+                    : "❌ Please upload a payment screenshot.", 'bg-red-600');
+                return resetState();
+            }
 
-            fetch(scriptURL, { method: 'POST', body: formData })
-                .then(() => {
-                    document.getElementById('spinner').classList.add('hidden');
-                    document.getElementById('submitBtn').removeAttribute('aria-disabled');
-                    document.getElementById('submitBtn').querySelector('span').innerText = "Submit";
+            try {
+                const base64 = await toBase64(file);
+                const postData = new URLSearchParams();
+                postData.append("name", formData.get('name') || '');
+                postData.append("phone", formData.get('phone') || '');
+                postData.append("email", formData.get('email') || '');
+                postData.append("batch", formData.get('ssc_batch') || '');
+                postData.append("participants", formData.get('participants') || '');
+                postData.append("tshirt", formData.get('tshirt_size') || '');
+                postData.append("paymentMethod", formData.get('payment_method') || '');
+                postData.append("transactionId", formData.get('transaction_id') || '');
+                postData.append("registrationId", registrationId);
+                postData.append("totalAmount", formData.get('total_amount') || '');
+                postData.append("screenshotBase64", base64.split(',')[1]);
+                postData.append("screenshotName", file.name);
+                postData.append("screenshotType", file.type);
+
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: postData
+                });
+
+                const result = await response.json();
+                if (result.result === 'success') {
+                    const slipData = {
+                        name: formData.get('name') || '',
+                        phone: formData.get('phone') || '',
+                        email: formData.get('email') || '',
+                        ssc_batch: formData.get('ssc_batch') || '',
+                        participants: formData.get('participants') || '',
+                        tshirt_size: formData.get('tshirt_size') || '',
+                        payment_method: formData.get('payment_method') || '',
+                        transaction_id: formData.get('transaction_id') || '',
+                        registration_id: registrationId,
+                        total_amount: formData.get('total_amount') || ''
+                    };
+
+                    localStorage.setItem('registrationSlip', JSON.stringify(slipData));
 
                     showToast((currentLanguage === 'bn'
                         ? "✅ নিবন্ধন সফল হয়েছে! রেজিস্ট্রেশন আইডি: "
-                        : "✅ Registration submitted! Registration ID: ") + registrationId);
+                        : "✅ Registration successful! Registration ID: ") + registrationId);
 
-                    const formDataObj = {
-                        name: form.name.value,
-                        phone: form.phone.value,
-                        email: form.email.value,
-                        ssc_batch: form.ssc_batch.value,
-                        participants: form.participants.value,
-                        tshirt_size: form.tshirt_size.value,
-                        payment_method: form.payment_method.value,
-                        transaction_id: form.transaction_id.value,
-                        registration_id: registrationId,
-                        total_amount: document.getElementById('total_amount').value
-                    };
-
-                    localStorage.setItem('registrationSlip', JSON.stringify(formDataObj));
                     form.reset();
+                    document.getElementById('paymentDetails').classList.add('hidden');
                     document.getElementById('amount_display').innerText = currentLanguage === 'bn'
                         ? "মোট: 0 টাকা"
                         : "Total: 0 Taka";
-                    document.getElementById('paymentDetails').classList.add('hidden');
 
                     window.location.href = 'registration_slip.html';
-                })
-                .catch(error => {
-                    console.error('Error!', error.message);
-                    document.getElementById('spinner').classList.add('hidden');
-                    document.getElementById('submitBtn').removeAttribute('aria-disabled');
-                    document.getElementById('submitBtn').querySelector('span').innerText = "Submit";
+                } else {
+                    throw new Error(result.message || 'Unknown error.');
+                }
+            } catch (err) {
+                console.error("Submission error:", err);
+                showToast(currentLanguage === 'bn'
+                    ? "❌ জমা দিতে ব্যর্থ হয়েছে। আবার চেষ্টা করুন।"
+                    : "❌ Submission failed. Please try again.", 'bg-red-600');
+            } finally {
+                resetState();
+            }
 
-                    showToast(currentLanguage === 'bn'
-                        ? "❌ জমা দিতে ব্যর্থ হয়েছে। আবার চেষ্টা করুন।"
-                        : "❌ Submission failed. Please try again.", 'bg-red-600');
-                });
+            function resetState() {
+                spinner.classList.add('hidden');
+                submitBtn.removeAttribute('aria-disabled');
+                submitText.innerText = currentLanguage === 'bn' ? "জমা দিন" : "Submit";
+            }
         });
+
+        function toBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
 
         // Set default language on page load
         window.addEventListener('DOMContentLoaded', () => {
