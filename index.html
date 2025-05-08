@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Bree+Serif&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Caveat:wght@400..700&family=Comic+Relief:wght@400;700&family=Coral+Pixels&family=Dancing+Script:wght@400..700&family=Edu+QLD+Beginner:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Playwrite+DK+Loopet:wght@100..400&family=Righteous&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
+
     <link rel="icon" type="image/png" sizes="32x32" href="logo.png" />
     <title>পোড়াবাড়ি উচ্চ বিদ্যালয়, সিরাজগঞ্জ ৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব</title>
 
@@ -81,7 +82,7 @@
         <h1 id="mainHeading" class="text-3xl font-bold">Reunion Festival Marking The 36 Years Anniversary of Porabari
             High
             School, Sirajganj</h1>
-        <p id="organizerInfo" class="text-sm mt-1">Organized by SSC students from 1989 to 2025</p>
+        <p id="organizerInfo" class="text-sm mt-1">👥 Organized by SSC students from 1989 to 2025</p>
 
         <div class="mt-2">
             <!-- Language selection buttons -->
@@ -101,20 +102,33 @@
 
     <!-- Registration form container -->
     <div class="max-w-xl mx-auto p-6 mt-10 bg-white rounded-2xl shadow-lg fade">
-        <h1 class="text-2xl font-bold mb-4 text-center">Registration Form</h1>
+
+        <!-- Highlight Bar for How to Make Payment Video -->
+        <div class="bg-yellow-100 text-yellow-900 px-4 py-3 text-center shadow-md fade">
+            <p id="paymentHelpText" class="text-sm md:text-base font-medium">
+                💡 Confused about payment?
+                <a id="paymentHelpLink" href="how_to_pay.html" target="_blank"
+                    class="underline text-blue-800 hover:text-green-800">
+                    Watch the Payment Instruction Video
+                </a>
+            </p>
+        </div>
+        <br>
+
+        <h1 class="text-2xl font-bold mb-4 text-center">Registration Form 📝</h1>
 
         <!-- Registration form starts here -->
         <form id="registrationForm">
             <!-- Full Name Input Field -->
             <div class="mb-4">
-                <label for="name" class="block mb-1 font-medium">Full Name <span class="text-red-500">*</span></label>
+                <label for="name" class="block mb-1 font-medium">Full Name 🧑<span class="text-red-500">*</span></label>
                 <input type="text" id="name" name="name" placeholder="Enter Your Full Name"
                     class="w-full border border-gray-300 p-2 rounded" required>
             </div>
 
             <!-- Phone Number Input Field with validation -->
             <div class="mb-4">
-                <label for="phone" class="block mb-1 font-medium">Phone Number <span
+                <label for="phone" class="block mb-1 font-medium">Phone Number 📱<span
                         class="text-red-500">*</span></label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter Your Phone Number" maxlength="11"
                     inputmode="numeric" pattern="01[0-9]{9}" class="w-full border border-gray-300 p-2 rounded"
@@ -124,14 +138,14 @@
 
             <!-- Email Address Input Field -->
             <div class="mb-4">
-                <label for="email" class="block mb-1 font-medium">Email Address</label>
+                <label for="email" class="block mb-1 font-medium">Email Address 📧</label>
                 <input type="email" placeholder="example@email.com" id="email" name="email"
                     class="w-full border border-gray-300 p-2 rounded">
             </div>
 
             <!-- SSC Batch Input Field -->
             <div class="mb-4">
-                <label for="ssc_batch" class="block mb-1 font-medium">SSC Batch <span
+                <label for="ssc_batch" class="block mb-1 font-medium">SSC Batch 🎓<span
                         class="text-red-500">*</span></label>
                 <select id="ssc_batch" name="ssc_batch" class="w-full border border-gray-300 p-2 rounded" required>
                     <option value="">Select Batch</option>
@@ -142,7 +156,7 @@
 
             <!-- Number of Participants Input Field with real-time total update -->
             <div class="mb-4">
-                <label for="participants" class="block mb-1 font-medium">Number of Participants <span
+                <label for="participants" class="block mb-1 font-medium">Number of Participants 👨‍👩‍👧‍👦<span
                         class="text-red-500">*</span></label>
                 <input type="number" placeholder="0" id="participants" name="participants" min="1" max="100"
                     class="w-full border border-gray-300 p-2 rounded" required oninput="updateAmount()">
@@ -150,7 +164,7 @@
 
             <!-- T-Shirt Size Dropdown Selection -->
             <div class="mb-4">
-                <label for="tshirt_size" class="block mb-1 font-medium">T-Shirt Size <span
+                <label for="tshirt_size" class="block mb-1 font-medium">T-Shirt Size 👕<span
                         class="text-red-500">*</span></label>
                 <select id="tshirt_size" name="tshirt_size" class="w-full border border-gray-300 p-2 rounded" required>
                     <option value="">Select Size</option>
@@ -164,7 +178,7 @@
 
             <!-- Payment Method Logo Selection -->
             <div class="mb-4">
-                <label class="block mb-1 font-medium">Payment Method <span class="text-red-500">*</span></label>
+                <label class="block mb-1 font-medium">Payment Method 💳<span class="text-red-500">*</span></label>
                 <div id="paymentOptions" class="flex gap-6 justify-center items-center">
 
                     <!-- bKash -->
@@ -220,7 +234,7 @@
 
             <!-- Copy Payment Number Button -->
             <button id="copyPaymentNumber" class="hidden bg-blue-600 text-white px-3 py-1 rounded mt-2">Copy
-                Number</button>
+                Number 📋</button>
 
             <!-- Total Amount Display -->
             <div class="mb-4">
@@ -230,7 +244,7 @@
 
             <!-- Transaction ID Input Field -->
             <div class="mb-4">
-                <label for="transaction_id" class="block mb-1 font-medium">Payment Transaction ID <span
+                <label for="transaction_id" class="block mb-1 font-medium">Payment Transaction ID 🔑<span
                         class="text-red-500">*</span></label>
                 <input type="text" id="transaction_id" name="transaction_id" placeholder="Enter Your Transaction ID"
                     maxlength="10" pattern=".{10,10}" class="w-full border border-gray-300 p-2 rounded" required>
@@ -239,7 +253,7 @@
             <!-- Payment Screenshot Upload Field -->
             <div class="mb-6">
                 <label for="payment_screenshot" class="block text-gray-700 font-medium mb-2">
-                    Payment Screenshot <span class="text-red-500">*</span>
+                    Payment Screenshot 📸<span class="text-red-500">*</span>
                 </label>
                 <div
                     class="border-2 border-dashed border-gray-300 rounded-lg p-4 bg-gray-50 hover:bg-gray-100 transition duration-200">
@@ -297,7 +311,7 @@
         </div>
 
         <!-- Developer Credit -->
-        <div class="mt-4 text-center text-xs text-gray-500 fade">
+        <div class="mt-4 cursor-not-allowed text-center text-xs text-blue-800 hover:text-green-600 fade">
             <p>Developed by <strong>MD. SOJIB HOSSEN</strong></p>
         </div>
 
@@ -310,20 +324,22 @@
         // Language translations
         const translations = {
             en: [
-                "Full Name", "Phone Number", "Email Address", "SSC Batch", "Number of Participants",
-                "T-Shirt Size", "Payment Method", "Payment Transaction ID", "Payment Screenshot", "Total:",
-                "Address: Porabari High School School Ground", "Contact: 01772-659023",
-                "Developed by MD. SOJIB HOSSEN", "Registration Form",
+                "Full Name 🧑", "Phone Number 📱", "Email Address 📧", "SSC Batch 🎓", "Number of Participants 👨‍👩‍👧‍👦",
+                "T-Shirt Size 👕", "Payment Method 💳", "Payment Transaction ID 🔑", "Payment Screenshot 📸", "Total:",
+                "📍 Address: Porabari High School School Ground", "📞 Contact: 01772-659023",
+                "👨‍💻 Developed by MD. SOJIB HOSSEN", "Registration Form 📝",
                 "Reunion Festival Marking The 36 Years Anniversary of Porabari High School, Sirajganj",
-                "Organized by SSC students from 1989 to 2025", "⏰ Registration Deadline: Please complete your registration and payment by May 15, 2025 to join the 36th Anniversary Reunion Festival of Porabari High School. Late entries will not be accepted."
+                "👥 Organized by SSC students from 1989 to 2025", "⏰ Registration Deadline: Please complete your registration and payment by May 15, 2025 to join the 36th Anniversary Reunion Festival of Porabari High School. Late entries will not be accepted.",
+                "💡 Confused about payment?", "Watch the Payment Instruction Video"
             ],
             bn: [
-                "পূর্ণ নাম", "ফোন নম্বর", "ইমেইল ঠিকানা", "এসএসসি ব্যাচ", "অংশগ্রহণকারীর সংখ্যা",
-                "টি-শার্টের সাইজ", "পেমেন্ট পদ্ধতি", "পেমেন্ট ট্রানজ্যাকশন আইডি", "পেমেন্ট স্ক্রিনশট", "মোট:",
-                "ঠিকানা: পোড়াবাড়ী উচ্চ বিদ্যালয় মাঠ", "যোগাযোগ: ০১৭৭২-৬৫৯০২৩",
-                "ডেভেলপার মো. সজিব হোসেন", "নিবন্ধন ফর্ম",
+                "পূর্ণ নাম 🧑", "ফোন নম্বর 📱", "ইমেইল ঠিকানা 📧", "এসএসসি ব্যাচ 🎓", "অংশগ্রহণকারীর সংখ্যা 👨‍👩‍👧‍👦",
+                "টি-শার্টের সাইজ 👕", "পেমেন্ট পদ্ধতি 💳", "পেমেন্ট ট্রানজ্যাকশন আইডি 🔑", "পেমেন্ট স্ক্রিনশট 📸", "মোট:",
+                "📍 ঠিকানা: পোড়াবাড়ী উচ্চ বিদ্যালয় মাঠ", "📞 যোগাযোগ: ০১৭৭২-৬৫৯০২৩",
+                "👨‍💻 ডেভেলপার মো. সজিব হোসেন", "নিবন্ধন ফর্ম 📝",
                 "পোড়াবাড়ি উচ্চ বিদ্যালয়, সিরাজগঞ্জ ৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব",
-                "আয়োজনে ১৯৮৯ থেকে ২০২৫ সালের এসএসসি শিক্ষার্থীবৃন্দ", "⏰ নিবন্ধনের শেষ সময়: দয়া করে ১৫ মে, ২০২৫ তারিখের মধ্যে রেজিস্ট্রেশন ও পেমেন্ট সম্পন্ন করুন। পুনর্মিলনী উৎসবে অংশ নিতে সময়মতো নিবন্ধন প্রয়োজন।"
+                "👥 আয়োজনে ১৯৮৯ থেকে ২০২৫ সালের এসএসসি শিক্ষার্থীবৃন্দ", "⏰ নিবন্ধনের শেষ সময়: দয়া করে ১৫ মে, ২০২৫ তারিখের মধ্যে রেজিস্ট্রেশন ও পেমেন্ট সম্পন্ন করুন। পুনর্মিলনী উৎসবে অংশ নিতে সময়মতো নিবন্ধন প্রয়োজন।",
+                "💡 পেমেন্ট নিয়ে বিভ্রান্ত?", "পেমেন্ট নির্দেশনা ভিডিও দেখুন"
             ]
         };
 
@@ -425,6 +441,8 @@
                 document.getElementById('mainHeading').innerText = text[14];
                 document.getElementById('organizerInfo').innerText = text[15];
                 document.getElementById('deadlineAnnouncement').innerText = text[16];
+                document.getElementById('paymentHelpText').childNodes[0].nodeValue = translations[lang][17] + ' ';
+                document.getElementById('paymentHelpLink').innerText = translations[lang][18];
 
                 const selectedMethod = document.getElementById('payment_method').value;
                 if (selectedMethod) {
@@ -513,7 +531,7 @@
             copyBtn.classList.remove('hidden');
             copyBtn.onclick = () => {
                 navigator.clipboard.writeText(paymentNumbers[method]);
-                showToast(currentLanguage === 'bn' ? "পেমেন্ট নম্বর কপি হয়েছে!" : "Payment number copied!");
+                showToast(currentLanguage === 'bn' ? "📋 পেমেন্ট নম্বর কপি হয়েছে!" : "📋 Payment number copied!");
             };
 
             // Transaction field settings
@@ -552,7 +570,7 @@
 
             spinner.classList.remove('hidden');
             submitBtn.setAttribute('aria-disabled', 'true');
-            submitText.innerText = currentLanguage === 'bn' ? "জমা দিচ্ছে..." : "Submitting...";
+            submitText.innerText = currentLanguage === 'bn' ? "⏳ জমা দিচ্ছে..." : "⏳ Submitting...";
 
             const batchYear = document.getElementById('ssc_batch').value || '0000';
             const uniqueSuffix = Date.now().toString().slice(-4);
