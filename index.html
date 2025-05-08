@@ -393,7 +393,7 @@
             }
 
             const guestCount = Math.max(0, participants - 1);
-            const guestAmount = 200;
+            const guestAmount = 400;
             const totalAmount = participantAmount + guestCount * guestAmount;
 
             totalAmountInput.value = totalAmount;
@@ -404,7 +404,7 @@
         function populateBatchYears() {
             const batchSelect = document.getElementById('ssc_batch');
             if (!batchSelect) return;
-            for (let year = 2016; year <= 2024; year++) {
+            for (let year = 2019; year <= 2019; year++) {
                 const option = document.createElement('option');
                 option.value = year;
                 option.text = year;
