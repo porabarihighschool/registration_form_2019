@@ -7,15 +7,17 @@
   <title>Registration Slip</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Poppins:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Bree+Serif&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Caveat:wght@400..700&family=Comic+Relief:wght@400;700&family=Coral+Pixels&family=Dancing+Script:wght@400..700&family=Edu+QLD+Beginner:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lilita+One&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Playwrite+DK+Loopet:wght@100..400&family=Righteous&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap"
     rel="stylesheet">
 
   <style>
     body {
       background: linear-gradient(135deg, #cbd5e1, #f1f5f9);
-      font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+      font-family: 'Exo 2', 'Hind Siliguri', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -56,14 +58,15 @@
 
     @page {
       size: A4 portrait;
-      margin: 1mm;
-      /* একটু কম margin যেন পুরো Slip ফিট করে */
+      margin: 0;
     }
 
     @media print {
       body {
         background: white;
         margin: 0;
+        zoom: 0.95;
+        /* Shrink to fit */
       }
 
       #registrationSlip {
@@ -73,16 +76,22 @@
         border: 1px solid #ccc;
         page-break-inside: avoid;
         break-inside: avoid;
+        display: block;
+      }
+
+      #registrationSlip * {
+        page-break-inside: avoid;
+        break-inside: avoid;
       }
 
       .print-btn {
         display: none;
-        /* Button Hide during Print */
       }
 
       * {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        page-break-after: avoid;
       }
     }
 
@@ -152,7 +161,7 @@
       padding: 10px 12px;
       border-bottom: 1px dashed #cbd5e1;
       color: #334155;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Exo 2', sans-serif;
       border-radius: 8px;
       transition: all 0.3s ease;
     }
@@ -188,10 +197,11 @@
       color: #64748b;
       margin-top: 30px;
       font-style: italic;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Exo 2', sans-serif;
     }
 
     .print-btn {
+      font-family: 'Exo 2', sans-serif;
       background-color: #3b82f6;
       color: white;
       padding: 8px 16px;
@@ -212,28 +222,32 @@
 
   <div id="registrationSlip">
     <div class="logo-bg">
-      <img src="logo.png" alt="School Logo" class="logo-img" />
+      <!-- <img src="" alt="School Logo" class="logo-img" /> -->
     </div>
 
     <div class="header">
       <h2>পোড়াবাড়ী উচ্চ বিদ্যালয়, সিরাজগঞ্জ</h2>
       <h3>৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব</h3>
-      <h3>Registration Slip</h3>
+      <h3>Registration Slip 📝</h3>
     </div>
 
-    <div class="info-section"><span class="label">Name:</span><span class="value" id="slipName"></span></div>
-    <div class="info-section"><span class="label">Phone:</span><span class="value" id="slipPhone"></span></div>
-    <div class="info-section"><span class="label">Email:</span><span class="value" id="slipEmail"></span></div>
-    <div class="info-section"><span class="label">SSC Batch:</span><span class="value" id="slipBatch"></span></div>
-    <div class="info-section"><span class="label">Participants:</span><span class="value" id="slipParticipants"></span>
+    <div class="info-section"><span class="label">Name 🧑:</span><span class="value" id="slipName"></span></div>
+    <div class="info-section"><span class="label">Phone 📱:</span><span class="value" id="slipPhone"></span></div>
+    <div class="info-section"><span class="label">Email 📧:</span><span class="value" id="slipEmail"></span></div>
+    <div class="info-section"><span class="label">SSC Batch 🎓:</span><span class="value" id="slipBatch"></span></div>
+    <div class="info-section"><span class="label">Participants 👨‍👩‍👧‍👦:</span><span class="value"
+        id="slipParticipants"></span>
     </div>
-    <div class="info-section"><span class="label">T-Shirt Size:</span><span class="value" id="slipTshirt"></span></div>
-    <div class="info-section"><span class="label">Payment Method:</span><span class="value" id="slipPayment"></span>
+    <div class="info-section"><span class="label">T-Shirt Size 👕:</span><span class="value" id="slipTshirt"></span>
     </div>
-    <div class="info-section"><span class="label">Transaction ID:</span><span class="value" id="slipTxn"></span></div>
-    <div class="info-section"><span class="label">Registration ID:</span><span class="value" id="slipRegID"></span>
+    <div class="info-section"><span class="label">Payment Method 💳:</span><span class="value" id="slipPayment"></span>
     </div>
-    <div class="info-section"><span class="label">Total Amount:</span><span class="value" id="slipAmount"></span></div>
+    <div class="info-section"><span class="label">Transaction ID 🔑:</span><span class="value" id="slipTxn"></span>
+    </div>
+    <div class="info-section"><span class="label">Registration ID 🔢:</span><span class="value" id="slipRegID"></span>
+    </div>
+    <div class="info-section"><span class="label">Total Amount 💰:</span><span class="value" id="slipAmount"></span>
+    </div>
 
     <div class="footer">
       <div>Generated On: <span id="slipDate"></span></div>
