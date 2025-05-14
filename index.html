@@ -630,8 +630,8 @@
                 newInput.setAttribute('minlength', '9');
                 newInput.setAttribute('pattern', '^[A-Z0-9]{9}$');
 
-                // Optional screenshot
-                screenshotInput.removeAttribute('required');
+                // Screenshot is required for all methods
+                screenshotInput.setAttribute('required', 'true');
                 document.getElementById('screenshotContainer').style.display = 'none';
 
                 newInput.addEventListener('input', function () {
