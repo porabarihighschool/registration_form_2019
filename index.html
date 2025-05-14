@@ -77,7 +77,7 @@
 
         /* Payment options style */
         #paymentOptions {
-            gap: 50px;
+            gap: 40px;
         }
     </style>
 
@@ -86,7 +86,7 @@
 <body class="bg-gray-100 text-gray-800">
 
     <!-- Header section for the event title and language toggle buttons -->
-    <header class="bg-blue-700 text-white py-4 text-center fade">
+    <header class="bg-gray-800 text-white py-4 text-center fade">
 
         <h1 id="mainHeading" class="text-3xl font-bold">Reunion Festival Marking The 36 Years Anniversary of Porabari
             High
@@ -192,7 +192,7 @@
 
                     <!-- bKash -->
                     <div id="option-bkash" onclick="selectPayment('bkash')"
-                        class="border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all">
+                        class="w-20 h-20 border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all flex justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="70" viewBox="0 0 122 54">
                             <!-- [your bKash SVG paths here] -->
                             <title>bKash</title>
@@ -220,16 +220,22 @@
 
                     <!-- Nagad -->
                     <div id="option-nagad" onclick="selectPayment('nagad')"
-                        class="border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all">
+                        class="w-20 h-20 border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all flex justify-center items-center">
                         <img src="https://nagad.com.bd/_nuxt/img/new-logo.14fe8a5.png" alt="Nagad" title="Nagad"
                             class="w-16">
                     </div>
 
                     <!-- Rocket -->
                     <div id="option-rocket" onclick="selectPayment('rocket')"
-                        class="border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all">
+                        class="w-20 h-20 border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all flex justify-center items-center">
                         <img src="https://www.dutchbanglabank.com/img/mlogo.png" alt="Rocket" title="Rocket"
                             class="w-16">
+                    </div>
+
+                    <!-- Cash -->
+                    <div id="option-cash" onclick="selectPayment('cash')"
+                        class="w-20 h-20 border-2 border-gray-300 rounded-xl p-2 cursor-pointer hover:scale-105 transition-all flex justify-center items-center">
+                        <img src="cash.png" alt="Cash" title="Cash" class="w-16">
                     </div>
                 </div>
 
@@ -247,7 +253,7 @@
 
             <!-- Total Amount Display -->
             <div class="mb-4">
-                <p id="amount_display" class="text-lg font-semibold">Total: 0 Taka</p>
+                <p id="amount_display" class="text-lg font-semibold whitespace-pre-line">Total Amount: 0 Taka</p>
                 <input type="hidden" id="total_amount" name="total_amount" value="0">
             </div>
 
@@ -334,7 +340,7 @@
         const translations = {
             en: [
                 "Full Name 🧑", "Phone Number 📱", "Email Address 📧", "SSC Batch 🎓", "Number of Participants 👨‍👩‍👧‍👦",
-                "T-Shirt Size 👕", "Payment Method 💳", "Payment Transaction ID 🔑", "Payment Screenshot 📸", "Total:",
+                "T-Shirt Size 👕", "Payment Method 💳", "Payment Transaction ID 🔑", "Payment Screenshot 📸", "Total Amount:",
                 "📍 Address: Porabari High School School Ground", "📞 Contact: 01772-659023",
                 "👨‍💻 Developed by MD. SOJIB HOSSEN", "Registration Form 📝",
                 "Reunion Festival Marking The 36 Years Anniversary of Porabari High School, Sirajganj",
@@ -343,7 +349,7 @@
             ],
             bn: [
                 "পূর্ণ নাম 🧑", "ফোন নম্বর 📱", "ইমেইল ঠিকানা 📧", "এসএসসি ব্যাচ 🎓", "অংশগ্রহণকারীর সংখ্যা 👨‍👩‍👧‍👦",
-                "টি-শার্টের সাইজ 👕", "পেমেন্ট পদ্ধতি 💳", "পেমেন্ট ট্রানজ্যাকশন আইডি 🔑", "পেমেন্ট স্ক্রিনশট 📸", "মোট:",
+                "টি-শার্টের সাইজ 👕", "পেমেন্ট পদ্ধতি 💳", "পেমেন্ট ট্রানজ্যাকশন আইডি 🔑", "পেমেন্ট স্ক্রিনশট 📸", "মোট পরিমাণ:",
                 "📍 ঠিকানা: পোড়াবাড়ী উচ্চ বিদ্যালয় মাঠ", "📞 যোগাযোগ: ০১৭৭২-৬৫৯০২৩",
                 "👨‍💻 ডেভেলপার মো. সজিব হোসেন", "নিবন্ধন ফর্ম 📝",
                 "পোড়াবাড়ি উচ্চ বিদ্যালয়, সিরাজগঞ্জ ৩৬ বছর পূর্তি উপলক্ষে পুনর্মিলনী উৎসব",
@@ -357,24 +363,33 @@
             en: {
                 bkash: "bKash Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below.",
                 nagad: "Nagad Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below.",
-                rocket: "Rocket Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below."
+                rocket: "Rocket Payment Number: 01772659023 (Personal). Please send the exact amount to the exact number and enter your transaction ID & upload your payment screenshot below.",
+                cash: "✅ Thank you for paying by hand cash."
             },
             bn: {
                 bkash: "বিকাশ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।",
                 nagad: "নগদ নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।",
-                rocket: "রকেট নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।"
+                rocket: "রকেট নম্বর: ০১৭৭২৬৫৯০২৩ (পার্সোনাল)। অনুগ্রহ করে সঠিক নম্বরে নির্ধারিত টাকা পাঠিয়ে নিচে ট্রানজ্যাকশন আইডি ও পেমেন্ট স্ক্রিনশট দিন।",
+                cash: "✅ আপনি হাতে নগদ অর্থ প্রদান করেছেন, ধন্যবাদ।"
             }
         };
 
-        // Payment numbers
         const paymentNumbers = {
             bkash: "01772659023",
             nagad: "01772659023",
-            rocket: "01772659023"
+            rocket: "01772659023",
+            cash: "" // No number needed for cash, leave empty or put a note
         };
 
         // default to English
         let currentLanguage = 'en';
+
+        // Charge rate
+        const paymentCharges = {
+            bkash: 1.6,    // 1.5%
+            nagad: 1.4,    // 1.2%
+            rocket: 1.7    // 1.3%
+        };
 
         // Update total amount
         function updateAmount() {
@@ -382,6 +397,7 @@
             const batchSelect = document.getElementById('ssc_batch');
             const totalAmountInput = document.getElementById('total_amount');
             const amountDisplay = document.getElementById('amount_display');
+            const paymentMethod = document.getElementById('payment_method').value;
 
             if (!participantsInput || !batchSelect || !totalAmountInput || !amountDisplay) return;
 
@@ -403,10 +419,45 @@
 
             const guestCount = Math.max(0, participants - 1);
             const guestAmount = 400;
-            const totalAmount = participantAmount + guestCount * guestAmount;
+            const baseTotal = participantAmount + guestCount * guestAmount;
 
-            totalAmountInput.value = totalAmount;
-            amountDisplay.innerText = `${translations[currentLanguage][9]} ${totalAmount} ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
+            // Default charge: 0%
+            let chargeRate = 0;
+            if (paymentMethod && paymentCharges[paymentMethod]) {
+                chargeRate = paymentCharges[paymentMethod] / 100;
+            }
+
+            const totalWithCharge = Math.ceil(baseTotal * (1 + chargeRate));
+
+            totalAmountInput.value = totalWithCharge;
+            amountDisplay.innerText = `${translations[currentLanguage][9]} ${totalWithCharge} ${currentLanguage === 'bn' ? 'টাকা' : 'Taka'}`;
+
+            // Breakdown info
+            let detailsText = '';
+            if (currentLanguage === 'bn') {
+                detailsText += `রেজিস্ট্রেশন ফি: ${baseTotal} টাকা\n`;
+                if (paymentMethod) {
+                    if (chargeRate > 0) {
+                        const chargeAmount = Math.ceil(baseTotal * chargeRate);
+                        detailsText += `চার্জ (${paymentMethod.toUpperCase()} ${paymentCharges[paymentMethod]}%): ${chargeAmount} টাকা\n`;
+                    } else if (paymentMethod === 'cash') {
+                        detailsText += `ক্যাশ পেমেন্টে কোনো অতিরিক্ত চার্জ নেই\n`;
+                    }
+                }
+                detailsText += `মোট পরিমাণ: ${totalWithCharge} টাকা`;
+            } else {
+                detailsText += `Registration Fee: ${baseTotal} Taka\n`;
+                if (paymentMethod) {
+                    if (chargeRate > 0) {
+                        const chargeAmount = Math.ceil(baseTotal * chargeRate);
+                        detailsText += `Charge (${paymentMethod.toUpperCase()} ${paymentCharges[paymentMethod]}%): ${chargeAmount} Taka\n`;
+                    } else if (paymentMethod === 'cash') {
+                        detailsText += `No extra charge for cash payment\n`;
+                    }
+                }
+                detailsText += `Total Amount: ${totalWithCharge} Taka`;
+            }
+            amountDisplay.innerText = detailsText;
         }
 
         // Populate SSC batch years
@@ -440,9 +491,8 @@
                     }
                 });
 
-                document.getElementById('amount_display').innerText =
-                    `${text[9]} ${document.getElementById('total_amount').value} ${lang === 'bn' ? 'টাকা' : 'Taka'}`;
-
+                // document.getElementById('amount_display').innerText =`${text[9]} ${document.getElementById('total_amount').value} ${lang === 'bn' ? 'টাকা' : 'Taka'}`;
+                updateAmount();
                 document.querySelector('.mt-8 p:nth-child(1)').innerHTML = `<strong>${text[10]}</strong>`;
                 document.querySelector('.mt-8 p:nth-child(2)').innerHTML = `<strong>${text[11]}</strong>`;
                 document.querySelector('.mt-4 p').innerText = text[12];
@@ -452,6 +502,9 @@
                 document.getElementById('deadlineAnnouncement').innerText = text[16];
                 document.getElementById('paymentHelpText').childNodes[0].nodeValue = translations[lang][17] + ' ';
                 document.getElementById('paymentHelpLink').innerText = translations[lang][18];
+                // Update submit button text
+                const submitText = document.getElementById('submitBtn').querySelector('span');
+                submitText.innerText = lang === 'bn' ? "জমা দিন" : "Submit";
 
                 const selectedMethod = document.getElementById('payment_method').value;
                 if (selectedMethod) {
@@ -501,31 +554,43 @@
             setTimeout(() => toast.classList.add('hidden'), 3000);
         }
 
-        // Image preview and removal
-        const fileInput = document.getElementById('payment_screenshot');
-        const preview = document.getElementById('screenshotPreview');
-        const container = document.getElementById('screenshotContainer');
-        const removeButton = document.getElementById('removeScreenshot');
-
-        fileInput.addEventListener('change', function (event) {
+        document.getElementById('payment_screenshot').addEventListener('change', function (event) {
             const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    container.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                container.style.display = 'none';
-                preview.src = '';
+            const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+            const allowedTypes = ['image/png', 'image/jpeg'];
+
+            if (file) {
+                // Check if the file is an image and within the size limit
+                if (allowedTypes.includes(file.type) && file.size <= maxSize) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const preview = document.getElementById('screenshotPreview');
+                        const container = document.getElementById('screenshotContainer');
+                        preview.src = e.target.result;
+                        container.style.display = 'block'; // Show preview container
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    showToast(currentLanguage === 'bn'
+                        ? "❌ ফাইলের আকার খুব বড়। দয়া করে ২MB এর নিচে একটি ছবি আপলোড করুন।"
+                        : "❌ File size is too large. Please upload an image under 2MB.", 'bg-red-600');
+                    // Reset the input if the file doesn't meet criteria
+                    event.target.value = '';
+                    const container = document.getElementById('screenshotContainer');
+                    container.style.display = 'none'; // Hide preview container
+                }
             }
         });
 
-        removeButton.addEventListener('click', function () {
-            fileInput.value = '';
-            preview.src = '';
-            container.style.display = 'none';
+        // Remove the uploaded screenshot
+        document.getElementById('removeScreenshot').addEventListener('click', function () {
+            const input = document.getElementById('payment_screenshot');
+            const preview = document.getElementById('screenshotPreview');
+            const container = document.getElementById('screenshotContainer');
+
+            input.value = ''; // Reset the input field
+            preview.src = ''; // Clear the preview
+            container.style.display = 'none'; // Hide the preview container
         });
 
         // Payment method select
@@ -537,36 +602,109 @@
             paymentDetails.classList.remove('hidden');
 
             const copyBtn = document.getElementById('copyPaymentNumber');
-            copyBtn.classList.remove('hidden');
-            copyBtn.onclick = () => {
-                navigator.clipboard.writeText(paymentNumbers[method]);
-                showToast(currentLanguage === 'bn' ? "📋 পেমেন্ট নম্বর কপি হয়েছে!" : "📋 Payment number copied!");
-            };
+            const number = paymentNumbers[method];
 
-            // Transaction field settings
-            const transactionInput = document.getElementById('transaction_id');
-            if (method === 'nagad') {
-                transactionInput.setAttribute('maxlength', '8');
-                transactionInput.setAttribute('minlength', '8');
-                transactionInput.setAttribute('pattern', '^[A-Z0-9]{8}$');
-                transactionInput.placeholder = "Enter Your 8 Character Transaction ID";
+            // Show/hide copy button
+            if (number) {
+                copyBtn.classList.remove('hidden');
+                copyBtn.onclick = () => {
+                    navigator.clipboard.writeText(number);
+                    showToast(currentLanguage === 'bn' ? "📋 পেমেন্ট নম্বর কপি হয়েছে!" : "📋 Payment number copied!");
+                };
             } else {
-                transactionInput.setAttribute('maxlength', '10');
-                transactionInput.setAttribute('minlength', '10');
-                transactionInput.setAttribute('pattern', '^[A-Z0-9]{10}$');
-                transactionInput.placeholder = "Enter Your 10 Character Transaction ID";
+                copyBtn.classList.add('hidden');
             }
 
-            transactionInput.addEventListener('input', function () {
-                this.value = this.value.toUpperCase();
-            });
+            const transactionInput = document.getElementById('transaction_id');
+            const screenshotInput = document.getElementById('payment_screenshot');
+            const fixedPin = 'ZAHID2019'; // Set your cash PIN here
 
-            // Highlight selected border
-            ['bkash', 'nagad', 'rocket'].forEach(id => {
+            // Clear old event listeners (clone & replace input field)
+            const newInput = transactionInput.cloneNode(true);
+            transactionInput.parentNode.replaceChild(newInput, transactionInput);
+
+            if (method === 'cash') {
+                newInput.value = '';
+                newInput.placeholder = "Enter Cash Transaction ID (Fixed PIN)";
+                newInput.setAttribute('maxlength', '9');
+                newInput.setAttribute('minlength', '9');
+                newInput.setAttribute('pattern', '^[A-Z0-9]{9}$');
+
+                // Optional screenshot
+                screenshotInput.removeAttribute('required');
+                document.getElementById('screenshotContainer').style.display = 'none';
+
+                newInput.addEventListener('input', function () {
+                    this.value = this.value.toUpperCase();
+
+                    if (this.value !== fixedPin) {
+                        const message = currentLanguage === 'bn'
+                            ? "❌ সঠিক ক্যাশ লেনদেন পিন লিখুন।"
+                            : "❌ Please enter the correct cash transaction pin.";
+
+                        this.setCustomValidity(message);
+                        this.reportValidity(); // 👈 force show message immediately
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+
+            } else {
+                newInput.value = '';
+                screenshotInput.setAttribute('required', 'true');
+
+                if (method === 'nagad') {
+                    newInput.setAttribute('maxlength', '8');
+                    newInput.setAttribute('minlength', '8');
+                    newInput.setAttribute('pattern', '^[A-Z0-9]{8}$');
+                    newInput.placeholder = "Enter Your 8 Character Transaction ID";
+                } else {
+                    newInput.setAttribute('maxlength', '10');
+                    newInput.setAttribute('minlength', '10');
+                    newInput.setAttribute('pattern', '^[A-Z0-9]{10}$');
+                    newInput.placeholder = "Enter Your 10 Character Transaction ID";
+                }
+
+                newInput.addEventListener('input', function () {
+                    this.value = this.value.toUpperCase();
+
+                    const value = this.value;
+                    let isValid = true;
+                    let message = '';
+
+                    if (method === 'nagad') {
+                        isValid = /^[A-Z0-9]{8}$/.test(value);
+                        if (!isValid) {
+                            message = currentLanguage === 'bn'
+                                ? "❌ লেনদেন আইডি ৮ অক্ষরের হতে হবে (বড় হাতের অক্ষর ও সংখ্যা)।"
+                                : "❌ Transaction ID must be 8 characters (uppercase letters and numbers).";
+                        }
+                    } else {
+                        isValid = /^[A-Z0-9]{10}$/.test(value);
+                        if (!isValid) {
+                            message = currentLanguage === 'bn'
+                                ? "❌ লেনদেন আইডি ১০ অক্ষরের হতে হবে (বড় হাতের অক্ষর ও সংখ্যা)।"
+                                : "❌ Transaction ID must be 10 characters (uppercase letters and numbers).";
+                        }
+                    }
+
+                    if (!isValid) {
+                        this.setCustomValidity(message);
+                        this.reportValidity(); // Force show message
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+            }
+
+            // Update border highlight
+            ['bkash', 'nagad', 'rocket', 'cash'].forEach(id => {
                 const div = document.getElementById('option-' + id);
                 div.classList.toggle('border-blue-600', id === method);
                 div.classList.toggle('border-gray-300', id !== method);
             });
+
+            updateAmount();
         }
 
         // Handle form submission
@@ -579,7 +717,7 @@
 
             spinner.classList.remove('hidden');
             submitBtn.setAttribute('aria-disabled', 'true');
-            submitText.innerText = currentLanguage === 'bn' ? "⏳ জমা দিচ্ছে..." : "⏳ Submitting...";
+            submitText.innerText = currentLanguage === 'bn' ? "⏳ জমা হচ্ছে..." : "⏳ Submitting...";
 
             const batchYear = document.getElementById('ssc_batch').value || '0000';
             const uniqueSuffix = Date.now().toString().slice(-4);
@@ -588,7 +726,10 @@
 
             const formData = new FormData(form);
             const file = formData.get('payment_screenshot');
-            if (!file || !file.name) {
+            const paymentMethod = formData.get('payment_method');
+
+            // Screenshot is required for all methods except "cash"
+            if ((!file || !file.name) && paymentMethod !== 'cash') {
                 showToast(currentLanguage === 'bn'
                     ? "❌ পেমেন্ট স্ক্রিনশট নির্বাচন করুন।"
                     : "❌ Please upload a payment screenshot.", 'bg-red-600');
@@ -605,12 +746,14 @@
                 postData.append("participants", formData.get('participants') || '');
                 postData.append("tshirt", formData.get('tshirt_size') || '');
                 postData.append("paymentMethod", formData.get('payment_method') || '');
-                postData.append("transactionId", formData.get('transaction_id') || '');
                 postData.append("registrationId", registrationId);
                 postData.append("totalAmount", formData.get('total_amount') || '');
                 postData.append("screenshotBase64", base64.split(',')[1]);
                 postData.append("screenshotName", file.name);
                 postData.append("screenshotType", file.type);
+
+                // Always include the transaction ID, even if the payment method is "cash"
+                postData.append("transactionId", formData.get('transaction_id') || '');  // Empty string is allowed for cash
 
                 const response = await fetch(scriptURL, {
                     method: 'POST',
@@ -627,10 +770,14 @@
                         participants: formData.get('participants') || '',
                         tshirt_size: formData.get('tshirt_size') || '',
                         payment_method: formData.get('payment_method') || '',
-                        transaction_id: formData.get('transaction_id') || '',
                         registration_id: registrationId,
                         total_amount: formData.get('total_amount') || ''
                     };
+
+                    // Add transactionId only if the payment method is not "cash"
+                    if (formData.get('payment_method') !== 'cash') {
+                        slipData.transaction_id = formData.get('transaction_id') || '';
+                    }
 
                     localStorage.setItem('registrationSlip', JSON.stringify(slipData));
 
@@ -641,8 +788,8 @@
                     form.reset();
                     document.getElementById('paymentDetails').classList.add('hidden');
                     document.getElementById('amount_display').innerText = currentLanguage === 'bn'
-                        ? "মোট: 0 টাকা"
-                        : "Total: 0 Taka";
+                        ? "মোট পরিমাণ: 0 টাকা"
+                        : "Total Amount: 0 Taka";
 
                     window.location.href = 'registration_slip.html';
                 } else {
