@@ -710,6 +710,14 @@
         // Handle form submission
         document.getElementById('registrationForm').addEventListener('submit', async function (e) {
             e.preventDefault();
+            const selectedMethod = document.getElementById('payment_method').value;
+            if (!selectedMethod) {
+                showToast(currentLanguage === 'bn'
+                    ? "❌ দয়া করে একটি পেমেন্ট পদ্ধতি সিলেক্ট করুন।"
+                    : "❌ Please select a payment method.", 'bg-red-600');
+                resetState(); // spinner off, button reset
+                return;
+            }
             const form = e.target;
             const spinner = document.getElementById('spinner');
             const submitBtn = document.getElementById('submitBtn');
